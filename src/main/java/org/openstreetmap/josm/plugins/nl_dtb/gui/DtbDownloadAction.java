@@ -11,8 +11,9 @@ import javax.swing.AbstractAction;
 import org.openstreetmap.josm.gui.MainApplication;
 import org.openstreetmap.josm.gui.PleaseWaitRunnable;
 import org.openstreetmap.josm.io.OsmTransferException;
-import org.openstreetmap.josm.plugins.nl_dtb.io.MultiFeatureDownloader;
-import org.openstreetmap.josm.plugins.nl_dtb.jts.Boundary;
+import org.openstreetmap.josm.plugins.nl_dtb.io.DtbMultiFeatureDownloader;
+import org.openstreetmap.josm.shared.nl_ogc.gui.SlippyMapDownloadDialog;
+import org.openstreetmap.josm.shared.nl_ogc.jts.Boundary;
 import org.openstreetmap.josm.tools.ImageProvider;
 import org.xml.sax.SAXException;
 
@@ -26,19 +27,17 @@ public class DtbDownloadAction extends AbstractAction {
     private boolean cancelled = false;
     private Boundary boundary;
     private final SlippyMapDownloadDialog slippyDialog;
-    private final FixedBoundsDownloadDialog fixedDialog;
 
-    private MultiFeatureDownloader downloader;
+    private DtbMultiFeatureDownloader downloader;
 
     public DtbDownloadAction() {
         super("Download", ImageProvider.get("download"));
         slippyDialog = new SlippyMapDownloadDialog();
-        fixedDialog = new FixedBoundsDownloadDialog();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.downloader = new MultiFeatureDownloader();
+        this.downloader = new DtbMultiFeatureDownloader();
         run();
     }
 

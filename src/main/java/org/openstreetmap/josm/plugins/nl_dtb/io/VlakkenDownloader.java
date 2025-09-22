@@ -2,15 +2,16 @@ package org.openstreetmap.josm.plugins.nl_dtb.io;
 
 import org.openstreetmap.josm.gui.MainApplication;
 import org.openstreetmap.josm.plugins.nl_dtb.DtbClient;
-import org.openstreetmap.josm.plugins.nl_dtb.data.PrimitiveFactory;
+import org.openstreetmap.josm.shared.nl_ogc.data.OgcLayerManager;
+import org.openstreetmap.josm.shared.nl_ogc.io.TaskStatus;
 
 import nl.pdok.ogc.dtb.ApiException;
 import nl.pdok.ogc.dtb.model.FeatureGeoJSONVlakken;
 
 public class VlakkenDownloader extends AbstractFeatureDownloader<FeatureGeoJSONVlakken> {
 
-    public VlakkenDownloader() {
-        super(FeatureGeoJSONVlakken.class);
+    public VlakkenDownloader(OgcLayerManager layerManager) {
+        super(FeatureGeoJSONVlakken.class, layerManager);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class VlakkenDownloader extends AbstractFeatureDownloader<FeatureGeoJSONV
     @Override
     public void addToOsm(FeatureGeoJSONVlakken feature) {
         var geometry = feature.getGeometry().getActualInstance();
-        var osmPrimitive = PrimitiveFactory.createPrimitive(geometry, getDataSet());
+        var osmPrimitive = getPrimitiveFactory().createAreaPrimitive(geometry, false);
         osmPrimitive.put("source", "NL:DTB");
         osmPrimitive.put("ref:NL:DTB", feature.getProperties().getDtbId().toString());
         var thema = feature.getProperties().getThema();
