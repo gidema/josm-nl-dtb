@@ -1,2 +1,19 @@
 feature,thema,themaB,key,value
 vlakken,kanaal,,natural,water
+vlakken,sloot,,natural,water
+vlakken,sloot,,water,ditch
+vlakken,sch,,building,shed
+vlakken,kantoorgeb,,building,office
+vlakken,bos,,natural,wood
+vlakken,gras,,landuse grass,
+vlakken,gras,,landcover grass,
+vlakken,strkn,,natural,scrub
+vlakken,tn,,leisure,garden
+vlakken,bmn,,natural,wood
+vlakken,bmn en strkn,,natural,wood
+vlakken,mr,,barrier,wall
+vlakken,kmr,,barrier,retaining_wall
+vlakken,tr,,highway,steps
+vlakken,br,,man_made,bridge
+vlakken,bit,,highway,unclassified
+vlakken,bit,,surface,asfalt

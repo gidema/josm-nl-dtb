@@ -8,7 +8,7 @@ import org.openstreetmap.josm.shared.nl_ogc.io.FeatureDownloader;
 import org.openstreetmap.josm.shared.nl_ogc.io.MultiFeatureDownloader;
 
 public class DtbMultiFeatureDownloader extends MultiFeatureDownloader {
-    private static OgcLayerManager layerManager = new OgcLayerManager("NL_BGT", new DtbGeometryHandler());
+    private static OgcLayerManager layerManager = new OgcLayerManager("NL_DTB", new DtbGeometryHandler());
     private static List<FeatureDownloader<?>> downloaders = List.of(
        new VlakkenDownloader(layerManager));
     private boolean cancelled = false;
